@@ -903,6 +903,9 @@ pub trait ExternalFunctionHandler {
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Literal(clingo_literal_t);
 impl Literal {
+    pub fn new(i: i32) -> Self {
+        Self(i)
+    }
     pub fn negate(self) -> Literal {
         Literal(-(self.0))
     }
@@ -910,12 +913,12 @@ impl Literal {
         self.0
     }
 }
-impl From<Atom> for Literal{
+impl From<Atom> for Literal {
     fn from(atom: Atom) -> Literal {
         Literal(atom.0 as i32)
     }
 }
-impl From<Literal> for Atom{
+impl From<Literal> for Atom {
     fn from(lit: Literal) -> Self {
         Atom(lit.0 as u32)
     }
