@@ -891,19 +891,7 @@ unsafe extern "C" fn unsafe_ground_callback<T: FunctionHandler>(
         }
     }
 }
-<<<<<<< HEAD
 
-/// Signed integer type used for aspif and solver literals.
-#[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Literal(clingo_literal_t);
-impl Literal {
-    pub fn new(i: i32) -> Self {
-        Self(i)
-    }
-    pub fn negate(self) -> Literal {
-        Literal(-(self.0))
-    }
-=======
 unsafe fn try_symbol_callback<T: FunctionHandler>(
     efh: &mut T,
     location: &ast::Location,
@@ -947,26 +935,13 @@ impl SolverLiteral {
     pub fn negate(self) -> SolverLiteral {
         SolverLiteral(-(self.0))
     }
-    // TODO: remove get_integer ?
->>>>>>> latest-origin/master
     pub fn get_integer(self) -> i32 {
         self.0
     }
 }
-<<<<<<< HEAD
-impl From<Atom> for Literal {
-    fn from(atom: Atom) -> Literal {
-        Literal(atom.0 as i32)
-    }
-}
-impl From<Literal> for Atom {
-    fn from(lit: Literal) -> Self {
-        Atom(lit.0 as u32)
-=======
 impl From<Atom> for SolverLiteral {
     fn from(atom: Atom) -> Self {
         SolverLiteral(atom.0 as i32)
->>>>>>> latest-origin/master
     }
 }
 /// Unsigned integer type used for aspif atoms.
